@@ -1,0 +1,13 @@
+[Unit]
+Description=Raspberry Pi PWM Cooling Fan Controller
+After=pigpiod.service
+
+[Service]
+Type=simple
+User=%i
+ExecStart=/opt/fanctl/fanctl.py --config /opt/fanctl/fanctl.conf
+Restart=on-failure
+RestartSec=10s
+
+[Install]
+WantedBy=multi-user.target
